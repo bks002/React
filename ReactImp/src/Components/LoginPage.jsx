@@ -2,11 +2,21 @@ import React, { useState } from "react";
 
 export default function LoginPage()
 {
-    const [details,setDetails] = useState([name,password]);
-    
+    const [details,setDetails] = useState({userName:'',password:''});
+
     const handler =(event)=>{
-        event.target.value
+        const{name,value} = event.target;
+        setDetails({...details,[name]:value});
     };
+    // console.log(details);
+
+    const getStarted =(e)=>{
+        e.preventDefault();
+        const tempName= details.userName;
+        const tempPass= details.password;
+        console.log(tempName,tempPass);
+        setDetails({userName:'',password:''})
+    }
     
     return(
         <div className="bg-orange-300 w-full h=full rounded-lg border-black border-2  ">
@@ -19,19 +29,31 @@ export default function LoginPage()
 
                     <div className="col-span-8 sm:col-span-6">
                         <input  className="w-full p-2 bg-orange-400 rounded-lg text-black border-black border-2 placeholder-black "
-                        type="text" name="Name" id="Name" placeholder="Enter Your Name" value={details.name} onChange={handler} />
+                        type="text" name="userName" id="userName" placeholder="Enter Your Name" value={details.userName} onChange={handler} />
                     </div>
                     
 
                     <div className="col-span-8 sm:col-span-6">
                         <input  className="bg-orange-400 p-2 rounded-lg text-black border-black border-2 placeholder-black w-full h-full "
-                        type="password" name="Name" id="Name" placeholder="Enter the Password" value={details.name} onChange={handler} />
+                        type="password" name="password" id="password" placeholder="Enter the Password" value={details.password} onChange={handler} />
                     </div>
+                    {/* passing props into the component */}
+                    {/* <div>
+                    <InputCom name="mobile" type="number" value={details.mobile} onChange={handler}/>
+                    </div> */}
                     <div className="col-span-8 sm:col-span-2">
-                        <button className="bg-orange-400 rounded-lg text-black border-black border-2">Get Started </button>
+                        <button className="bg-orange-400 rounded-lg text-black border-black border-2" onClick={getStarted}>Get Started</button>
                     </div>
                 </div>
+               
         </div>
     )
     
 }
+//creating a new component for code reuseability
+// const InputCom=(props)=>{
+//     return(
+//     <input  className="w-full p-2 bg-orange-400 rounded-lg text-black border-black border-2 placeholder-black "
+//     type={props.type} name={props.name} id="userName" placeholder="Enter Your Name" value={props.value} onChange={props.onChnage} />
+//     )
+// }
