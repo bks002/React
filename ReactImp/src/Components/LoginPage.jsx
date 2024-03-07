@@ -20,7 +20,7 @@ export default function LoginPage()
     
     return(
         <div className="bg-orange-300 w-full h=full rounded-lg border-black border-2  ">
-            <p className="text-3xl font-bold m-4">LogIn Page</p>
+            <p className="text-3xl font-bold m-4 text-center">LogIn Page</p>
             <div className="m-4 p-4 grid  grid-cols-8 gap-4 ">
 
                     <div  className="bg-orange-400 rounded-lg text-black p-2 border-black border-2 col-span-8 sm:col-span-2 " >
